@@ -1,4 +1,5 @@
 import Image from "./Image";
+import Button from "./UI/Button";
 
 const ProductCard = () => {
   return (
@@ -30,13 +31,14 @@ const ProductCard = () => {
             className="w-10 h-10 rounded-full object-bottom"
           />
         </div>
+
         <div className="flex items-center justify-between space-x-2 mt-5">
-          <button className="bg-indigo-700 rounded-md w-full text-white">
+          <Button className="bg-indigo-700" width="w-full">
             Edit
-          </button>
-          <button className="bg-red-700 rounded-md w-full text-white">
+          </Button>
+          <Button className="bg-red-700" width="w-full">
             Delete
-          </button>
+          </Button>
         </div>
       </div>
     </>
