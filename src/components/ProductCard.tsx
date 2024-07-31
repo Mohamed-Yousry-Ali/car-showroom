@@ -1,33 +1,33 @@
+import { IProduct } from "../interfaces";
+import { txtSlicer } from "../utils/functions";
 import Image from "./Image";
 import Button from "./UI/Button";
 
-const ProductCard = () => {
+interface Iprop {
+  product: IProduct;
+}
+const ProductCard = ({ product }: Iprop) => {
   return (
     <>
-      <div className="border rounded-md flex flex-col p-2">
+      <div className="max-w-sm md:max-w-lg mx-auto border rounded-md flex flex-col p-2">
         <Image
-          imageUrl="https://media.hatla2eestatic.com/uploads/ncarmodel/9849/thumbnail-up_2b2f6d3671b9cdae627fe1e8656a8e18.png"
-          alt="Product Name"
+          imageUrl={product.imageUrl}
+          alt={product.title}
           className="rounded-md mb-2"
         />
-        <h3>Hyundai Elantra HD 2023</h3>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid fuga
-          inventore quibusdam optio distinctio quo labore ipsum quis? Quidem
-          sunt distinctio saepe dolore, sapiente ullam reprehenderit et delectus
-          amet aperiam?
-        </p>
+        <h2>{product.title}</h2>
+        <p>{txtSlicer(product.descriptipn)}</p>
         <div className="flex space-x-2 my-4 items-center">
           <span className="w-5 h-5 bg-indigo-600 rounded-full cursor-pointer" />
           <span className="w-5 h-5 bg-yellow-600 rounded-full cursor-pointer" />
           <span className="w-5 h-5 bg-red-600 rounded-full cursor-pointer" />
         </div>
         <div className="flex items-center justify-between">
-          <span>$710,000</span>
+          <span>{product.price}</span>
 
           <Image
-            imageUrl="https://media.hatla2eestatic.com/uploads/ncarmodel/9849/thumbnail-up_2b2f6d3671b9cdae627fe1e8656a8e18.png"
-            alt="Product Name"
+            imageUrl={product.category.imageUrl}
+            alt={product.category.name}
             className="w-10 h-10 rounded-full object-bottom"
           />
         </div>
