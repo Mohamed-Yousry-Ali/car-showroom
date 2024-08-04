@@ -1,12 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import ProductCard from "./components/ProductCard";
-import { formInputList, ProductList } from "./data";
+import { colors, formInputList, ProductList } from "./data";
 import Modal from "./components/UI/Modal";
 import Button from "./components/UI/Button";
 import Input from "./components/UI/Input";
 import { IProduct } from "./interfaces";
 import { productValidations } from "./validations";
 import ErrorMsg from "./components/ErrorMsg";
+import CircleColor from "./components/CircleColor";
+import { v4 as uuid } from "uuid";
 
 const App = () => {
   const defaultProductObj = {
@@ -21,6 +23,7 @@ const App = () => {
     },
   };
   /* State */
+  const [products, setProducts] = useState<IProduct[]>(ProductList);
   const [product, setProduct] = useState<IProduct>(defaultProductObj);
   const [errors, setErrors] = useState({
     title: "",
@@ -28,6 +31,7 @@ const App = () => {
     imageUrl: "",
     price: "",
   });
+  const [tempColors, setTemoColors] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   /* Handler */
@@ -66,9 +70,14 @@ const App = () => {
     if (!hasErrorMsg) {
       setErrors(errors);
       return;
-    } else {
-      console.log("send data");
     }
+    setProducts((prev) => [
+      { ...product, id: uuid(), colors: tempColors },
+      ...prev,
+    ]);
+    setProduct(defaultProductObj);
+    setTemoColors([]);
+    close();
   };
 
   const onCancel = () => {
@@ -76,7 +85,7 @@ const App = () => {
     close();
   };
   /* Render */
-  const renderProductList = ProductList.map((product) => (
+  const renderProductList = products.map((product) => (
     <ProductCard key={product.id} product={product} />
   ));
 
@@ -99,6 +108,20 @@ const App = () => {
     </div>
   ));
 
+  const renderProductColor = colors.map((color) => (
+    <CircleColor
+      key={color}
+      color={color}
+      onClick={() => {
+        if (tempColors.includes(color)) {
+          setTemoColors((prev) => prev.filter((item) => item !== color));
+          return;
+        }
+        setTemoColors((prev) => [...prev, color]);
+      }}
+    />
+  ));
+
   return (
     <main className="container">
       <Button className="bg-indigo-700 hover:bg-indigo-800" onClick={open}>
@@ -111,7 +134,20 @@ const App = () => {
       <Modal isOpen={isOpen} close={close} title="Add A New Product">
         <form className="space-y-3" onSubmit={submitHandler}>
           {renderInputForm}
-
+          <div className="flex space-x-1 flex-wrap items-center">
+            {renderProductColor}
+          </div>
+          <div className="flex space-x-1 flex-wrap items-center">
+            {tempColors.map((color) => (
+              <span
+                key={color}
+                className="p-1 mr-1 mb-1 text-sm rounded-md text-white"
+                style={{ backgroundColor: color }}
+              >
+                {color}
+              </span>
+            ))}
+          </div>
           <div className="flex items-center space-x-3">
             <Button className="bg-indigo-700 hover:bg-indigo-800">
               Submit
