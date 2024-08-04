@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import { IFormInput, IProduct } from "../interfaces";
+import { ICategory, IFormInput, IProduct } from "../interfaces";
 
 export const ProductList: IProduct[] = [
   {
@@ -177,4 +177,43 @@ export const colors: string[] = [
   "#1F8A70",
   "#820000",
   "#FF0032",
+];
+
+export const categories: ICategory[] = [
+  {
+    id: uuid(),
+    name: "Mitsubishi",
+    imageUrl:
+      "https://media.hatla2eestatic.com/uploads/car/2024/07/28/6597548/full_up_a182491f8be0809db41e9369e42af930.jpg",
+  },
+  {
+    id: uuid(),
+    name: "HYUNDAI ",
+    imageUrl:
+      "https://media.hatla2eestatic.com/uploads/ncarmodel/12293/big-up_8e6ca48eaa051a4dc1821b104a12c89e.png",
+  },
+  {
+    id: uuid(),
+    name: "Skoda ",
+    imageUrl:
+      "https://media.hatla2eestatic.com/uploads/car/2024/07/24/6590898/full_up_3de9fc115f73ae36b80cb9b37d4ca4fe.jpg",
+  },
+  {
+    id: uuid(),
+    name: "Mercedes ",
+    imageUrl:
+      "https://media.hatla2eestatic.com/uploads/car/2024/07/31/6604899/full_up_eda3029b1585011ed3a82db7ffe3603b.jpg",
+  },
+  {
+    id: uuid(),
+    name: "BMW ",
+    imageUrl:
+      "https://media.hatla2eestatic.com/uploads/car/2024/07/31/6604125/full_up_a16b853d67dc8549506cc2a568ea58dd.jpg",
+  },
+  {
+    id: uuid(),
+    name: "KIA ",
+    imageUrl:
+      "https://media.hatla2eestatic.com/uploads/car/2024/07/24/6590898/full_up_3de9fc115f73ae36b80cb9b37d4ca4fe.jpg",
+  },
 ];

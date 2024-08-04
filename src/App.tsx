@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import ProductCard from "./components/ProductCard";
-import { colors, formInputList, ProductList } from "./data";
+import { categories, colors, formInputList, ProductList } from "./data";
 import Modal from "./components/UI/Modal";
 import Button from "./components/UI/Button";
 import Input from "./components/UI/Input";
@@ -9,6 +9,7 @@ import { productValidations } from "./validations";
 import ErrorMsg from "./components/ErrorMsg";
 import CircleColor from "./components/CircleColor";
 import { v4 as uuid } from "uuid";
+import SelectM from "./components/UI/SelectM";
 
 const App = () => {
   const defaultProductObj = {
@@ -33,7 +34,7 @@ const App = () => {
   });
   const [tempColors, setTemoColors] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   /* Handler */
   function open() {
     setIsOpen(true);
@@ -72,7 +73,12 @@ const App = () => {
       return;
     }
     setProducts((prev) => [
-      { ...product, id: uuid(), colors: tempColors },
+      {
+        ...product,
+        id: uuid(),
+        colors: tempColors,
+        category: selectedCategory,
+      },
       ...prev,
     ]);
     setProduct(defaultProductObj);
@@ -134,6 +140,10 @@ const App = () => {
       <Modal isOpen={isOpen} close={close} title="Add A New Product">
         <form className="space-y-3" onSubmit={submitHandler}>
           {renderInputForm}
+          <SelectM
+            selected={selectedCategory}
+            setSelected={setSelectedCategory}
+          />
           <div className="flex space-x-1 flex-wrap items-center">
             {renderProductColor}
           </div>
@@ -148,6 +158,7 @@ const App = () => {
               </span>
             ))}
           </div>
+
           <div className="flex items-center space-x-3">
             <Button className="bg-indigo-700 hover:bg-indigo-800">
               Submit
