@@ -9,7 +9,7 @@ export const ProductList: IProduct[] = [
       "HYUNDAI ELANTRA CN7 NEW CASH OR INSTALLMENT Elantra CN7 2024 A/T / BLACK DIAMOND",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/ncarmodel/12293/big-up_8e6ca48eaa051a4dc1821b104a12c89e.png",
-    price: "1,300,000 EGP",
+    price: "1300000",
     colors: ["#A31ACB", "#FF6E31", "#3C2A21"],
     category: {
       name: "HYUNDAI ",
@@ -24,7 +24,7 @@ export const ProductList: IProduct[] = [
       "Used Hyundai Tucson Turbo GDI 2021 For Sale Sheraton Sell your car faster than ever before",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/car/2024/07/27/6597029/full_up_358171ef9f6f5223d61535e26da1bb18.jpg",
-    price: "1,500,000 EGP",
+    price: "1500000",
     colors: ["#A31ACB", "#CB1C8D", "#645CBB", "#1F8A70", "#820000", "#FF0032"],
     category: {
       name: "HYUNDAI ",
@@ -39,7 +39,7 @@ export const ProductList: IProduct[] = [
       "Used BMW X5 M 2023 For Sale Tagamo3 - New Cairo Sell your car faster than ever before",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/car/2024/07/31/6604125/full_up_a16b853d67dc8549506cc2a568ea58dd.jpg",
-    price: "8,100,000 EGP",
+    price: "8100000",
     colors: ["#A31ACB", "#FF6E31", "#3C2A21"],
     category: {
       name: "BMW ",
@@ -54,7 +54,7 @@ export const ProductList: IProduct[] = [
       "Used Skoda Octavia A8 2024 for sale 6 October faster than ever before and more beauty",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/car/2024/07/24/6590898/full_up_3de9fc115f73ae36b80cb9b37d4ca4fe.jpg",
-    price: "1,800,000 EGP",
+    price: "1800000",
     colors: ["#A31ACB", "#1F8A70", "#820000", "#FF0032"],
     category: {
       name: "Skoda ",
@@ -69,7 +69,7 @@ export const ProductList: IProduct[] = [
       "Imported used Mercedes C 200 2023 for sale Heliopolis BLACK DIAMOND",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/car/2024/07/31/6604899/full_up_eda3029b1585011ed3a82db7ffe3603b.jpg",
-    price: "2,700,000 EGP",
+    price: "2700000",
     colors: [
       "#A31ACB",
       "#FF6E31",
@@ -95,7 +95,7 @@ export const ProductList: IProduct[] = [
       "Imported used Mercedes C 200 AMG 2023 for sale Heliopolis Sell your car faster than ever before",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/car/2024/07/31/6604340/full_up_14546d2b61e4667adc4081677d64f43a.jpg",
-    price: "3,150,000 EGP",
+    price: "3150000",
     colors: ["#A31ACB", "#FF6E31", "#000000", "#645CBB", "#FF0032"],
     category: {
       name: "Mercedes ",
@@ -110,7 +110,7 @@ export const ProductList: IProduct[] = [
       "Used BMW X5 M 2023 For Sale Tagamo3 - New Cairo Sell your car faster than ever before",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/car/2024/07/28/6597548/full_up_a182491f8be0809db41e9369e42af930.jpg",
-    price: "1,730,000 EGP",
+    price: "1730000",
     colors: ["#A31ACB", "#645CBB", "#820000", "#FF0032"],
     category: {
       name: "Mitsubishi",
@@ -125,7 +125,7 @@ export const ProductList: IProduct[] = [
       "Used Kia Carens 2014 for sale Nasr city faster than ever before and more beauty",
     imageUrl:
       "https://media.hatla2eestatic.com/uploads/car/2024/07/31/6604511/full_up_c5c8497b6e3be098794c39601d26a658.jpg",
-    price: "710,000 EGP",
+    price: "710000",
     colors: ["#1F8A70", "#820000", "#FF0032"],
     category: {
       name: "KIA ",

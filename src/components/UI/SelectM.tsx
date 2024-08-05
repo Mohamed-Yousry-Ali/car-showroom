@@ -10,7 +10,7 @@ import { categories } from "../../data";
 import { ICategory } from "../../interfaces";
 
 interface IProp {
-  selected: ICategory;
+  selected: { name: string; imageUrl: string };
   setSelected: (category: ICategory) => void;
 }
 const SelectM = ({ selected, setSelected }: IProp) => {

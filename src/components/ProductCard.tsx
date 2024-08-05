@@ -6,12 +6,29 @@ import Button from "./UI/Button";
 
 interface Iprop {
   product: IProduct;
+  setProductToEdit: (product: IProduct) => void;
+  openEdit: () => void;
+  idx: number;
+  setProductToEditidx: (value: number) => void;
 }
-const ProductCard = ({ product }: Iprop) => {
+const ProductCard = ({
+  product,
+  setProductToEdit,
+  openEdit,
+  setProductToEditidx,
+  idx,
+}: Iprop) => {
   const { title, descriptipn, imageUrl, price, colors, category } = product;
   const renderProductColor = colors.map((color) => (
     <CircleColor key={color} color={color} />
   ));
+  function onEdit() {
+    setProductToEdit(product);
+    openEdit();
+
+    setProductToEditidx(idx);
+  }
+
   return (
     <>
       <div className="max-w-sm md:max-w-lg mx-auto border rounded-md flex flex-col p-2">
@@ -34,7 +51,11 @@ const ProductCard = ({ product }: Iprop) => {
         </div>
 
         <div className="flex items-center justify-between space-x-2 mt-5">
-          <Button className="bg-indigo-700 hover:bg-indigo-800" width="w-full">
+          <Button
+            className="bg-indigo-700 hover:bg-indigo-800"
+            width="w-full"
+            onClick={onEdit}
+          >
             Edit
           </Button>
           <Button className="bg-red-700 hover:bg-red-800" width="w-full">
