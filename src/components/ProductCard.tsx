@@ -10,6 +10,7 @@ interface Iprop {
   openEdit: () => void;
   idx: number;
   setProductToEditidx: (value: number) => void;
+  openConfirm: () => void;
 }
 const ProductCard = ({
   product,
@@ -17,16 +18,23 @@ const ProductCard = ({
   openEdit,
   setProductToEditidx,
   idx,
+  openConfirm,
 }: Iprop) => {
   const { title, descriptipn, imageUrl, price, colors, category } = product;
   const renderProductColor = colors.map((color) => (
     <CircleColor key={color} color={color} />
   ));
+
   function onEdit() {
     setProductToEdit(product);
     openEdit();
 
     setProductToEditidx(idx);
+  }
+
+  function onDelete() {
+    setProductToEdit(product);
+    openConfirm();
   }
 
   return (
@@ -58,7 +66,11 @@ const ProductCard = ({
           >
             Edit
           </Button>
-          <Button className="bg-red-700 hover:bg-red-800" width="w-full">
+          <Button
+            className="bg-red-700 hover:bg-red-800"
+            width="w-full"
+            onClick={onDelete}
+          >
             Delete
           </Button>
         </div>

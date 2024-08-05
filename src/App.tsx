@@ -11,7 +11,7 @@ import CircleColor from "./components/CircleColor";
 import { v4 as uuid } from "uuid";
 import SelectM from "./components/UI/SelectM";
 import { productName } from "./type";
-
+import toast, { Toaster } from "react-hot-toast";
 const App = () => {
   const defaultProductObj = {
     title: "",
@@ -39,6 +39,7 @@ const App = () => {
   const [tempColors, setTemoColors] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [isOpenConfirmModal, setIsOpenConfirmModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   /* Handler */
   function open() {
@@ -55,6 +56,14 @@ const App = () => {
   function closeEdit() {
     setIsOpenEdit(false);
   }
+  function openConfirm() {
+    setIsOpenConfirmModal(true);
+  }
+
+  function closeConfirmModal() {
+    setIsOpenConfirmModal(false);
+  }
+
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setProduct({
@@ -108,6 +117,13 @@ const App = () => {
     setProduct(defaultProductObj);
     setTemoColors([]);
     close();
+    toast.success("Added Successfully", {
+      icon: "👏",
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
   };
 
   const submitEditHandler = (event: FormEvent<HTMLFormElement>): void => {
@@ -138,12 +154,35 @@ const App = () => {
     setProductToEdit(defaultProductObj);
     setTemoColors([]);
     closeEdit();
+    toast.success("Edit Successfully", {
+      icon: "👏",
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
   };
 
   const onCancel = () => {
     setProduct(defaultProductObj);
     close();
   };
+
+  const removeProductHandler = () => {
+    const filtred = products.filter(
+      (product) => product.id !== productToEdit.id
+    );
+    setProducts(filtred);
+    closeConfirmModal();
+    toast.success("Delleted Successfully", {
+      icon: "👏",
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
+  };
+
   /* Render */
   const renderProductList = products.map((product, idx) => (
     <ProductCard
@@ -153,6 +192,7 @@ const App = () => {
       openEdit={openEdit}
       idx={idx}
       setProductToEditidx={setProductToEditidx}
+      openConfirm={openConfirm}
     />
   ));
 
@@ -316,6 +356,29 @@ const App = () => {
           </div>
         </form>
       </Modal>
+
+      {/* Delete Modal */}
+      <Modal
+        isOpen={isOpenConfirmModal}
+        close={closeConfirmModal}
+        title="Delete Product"
+      >
+        <div className="flex items-center space-x-3">
+          <Button
+            className="bg-indigo-700 hover:bg-indigo-800"
+            onClick={removeProductHandler}
+          >
+            remove
+          </Button>
+          <Button
+            className="bg-gray-700 hover:bg-gray-800"
+            onClick={closeConfirmModal}
+          >
+            Cancel
+          </Button>
+        </div>
+      </Modal>
+      <Toaster />
     </main>
   );
 };
